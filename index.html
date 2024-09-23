@@ -61,12 +61,15 @@
     <main class="md:container mx-auto pb-8">
         <!-- button section  -->
         <section class=" flex justify-center items-center gap-4 mt-24">
-            <button
+            <button id="donationBtn"
                 class="btn bg-[#B4F461]  text-black flex justify-center items-center px-8 py-4 font-bold">Donation</button>
-            <button class="btn text-black flex justify-center items-center px-8 py-4 font-bold">History</button>
+            <button id="historyBtn"
+                class="btn text-black flex justify-center items-center px-8 py-4 font-bold">History</button>
         </section>
 
-        <section class="mt-6">
+        <!-- donation section -->
+
+        <section id="donationSection" class="mt-6">
 
             <section class=" mt-6 px-5">
                 <!-- 1st card  -->
@@ -79,7 +82,7 @@
                     <!-- description section -->
                     <div class="w-full md:w-1/2 space-y-1 mt-4 md:mt-0">
                         <div>
-                            <button class="btn" id=""><img src="./images/coin.png" alt="">
+                            <button class="btn" id="noakhali-money"><img src="./images/coin.png" alt="">
                                 10000 BDT</button>
                         </div>
                         <h4 class="font-bold">Donate for Flood at Noakhali, Bangladesh</h4>
@@ -93,9 +96,10 @@
                             impact on the lives of those in need.</p>
                         <div>
                             <input type="text" class="w-full mt-4 p-2 border rounded"
-                                placeholder="Write Donation Amount" id="">
+                                placeholder="Write Donation Amount" id="noakhali-input">
                         </div>
-                        <button class="btn bg-[#B4F461] text-black flex justify-center items-center w-full mt-4">Donate
+                        <button id="noakhali-donation"
+                            class="btn bg-[#B4F461] text-black flex justify-center items-center w-full mt-4">Donate
                             Now</button>
                     </div>
                 </section>
@@ -110,7 +114,7 @@
                     <!-- description section -->
                     <div class="w-full md:w-1/2 space-y-1 mt-4 md:mt-0">
                         <div>
-                            <button class="btn"><img src="./images/coin.png" alt="">
+                            <button id="feni-money" class="btn"><img src="./images/coin.png" alt="">
                                 10000 BDT</button>
                         </div>
                         <h4 class="font-bold">Donate for Flood Relief in Feni,Bangladesh</h4>
@@ -125,9 +129,10 @@
                             real difference. Please consider donating today to assist those in urgent need.</p>
                         <div>
                             <input type="text" class="w-full mt-4 p-2 border rounded"
-                                placeholder="Write Donation Amount" id="">
+                                placeholder="Write Donation Amount" id="feni-input">
                         </div>
-                        <button class="btn bg-[#B4F461] text-black flex justify-center items-center w-full mt-4">Donate
+                        <button id="feni-donatation"
+                            class="btn bg-[#B4F461] text-black flex justify-center items-center w-full mt-4">Donate
                             Now</button>
                     </div>
                 </section>
@@ -142,7 +147,7 @@
                     <!-- description section -->
                     <div class="w-full md:w-1/2 space-y-1 mt-4 md:mt-0">
                         <div>
-                            <button class="btn"><img src="./images/coin.png" alt="">
+                            <button id="quota-protest-money" class="btn"><img src="./images/coin.png" alt="">
                                 10000 BDT</button>
                         </div>
                         <h4 class="font-bold">Aid for Injured in the Quota Movement</h4>
@@ -157,18 +162,20 @@
                             donation to support these brave individuals in their time of need.</p>
                         <div>
                             <input type="text" class="w-full mt-4 p-2 border rounded"
-                                placeholder="Write Donation Amount" id="">
+                                placeholder="Write Donation Amount" id="quota-protest-input">
                         </div>
-                        <button class="btn bg-[#B4F461] text-black flex justify-center items-center w-full mt-4">Donate
+                        <button id="quota-protest-donation"
+                            class="btn bg-[#B4F461] text-black flex justify-center items-center w-full mt-4">Donate
                             Now</button>
                     </div>
                 </section>
             </section>
         </section>
 
-
-
-
+        <!-- hidden section  -->
+        <section id="hiddenSection" style="display: none;">
+            <div></div>
+        </section>
     </main>
 
     <!-- footer section -->
@@ -188,8 +195,54 @@
     <!-- javaScript  -->
     <script src="./js/script.js"></script>
     <script>
+        // Function to update the current-money and the cause's money
+        function donateToCause(causeInputId, causeMoneyId, donationBtnId) {
+            // Get elements by IDs
+            const causeInput = document.getElementById(causeInputId);
+            const causeMoney = document.getElementById(causeMoneyId);
+            const currentMoney = document.getElementById('current-money');
 
+            // Add event listener to the donation button
+            document.getElementById(donationBtnId).addEventListener('click', function () {
+                let donationAmount = parseInt(causeInput.value);
+                let availableMoney = parseInt(currentMoney.textContent.replace(/\D/g, '')); // Extracts only the number (ignoring 'BDT')
+                let currentCauseMoney = parseInt(causeMoney.textContent.replace(/\D/g, '')); // Extracts only the number (ignoring 'BDT')
 
+                // Validate the donation amount
+                if (isNaN(donationAmount) || donationAmount <= 0) {
+                    alert("Please enter a valid positive number.");
+                    return;
+                }
+
+                if (donationAmount > availableMoney) {
+                    alert("Donation amount cannot exceed current available funds.");
+                    return;
+                }
+
+                // If validation passes, update the amounts
+                causeMoney.textContent = (currentCauseMoney + donationAmount).toLocaleString() + ' BDT';
+                currentMoney.textContent = (availableMoney - donationAmount).toLocaleString() + ' BDT';
+
+                // Clear the input field after donation
+                causeInput.value = '';
+            });
+        }
+
+        // Call the function for Noakhali donation
+        donateToCause('noakhali-input', 'noakhali-money', 'noakhali-donation');
+
+        // Call the function for Feni donation
+        donateToCause('feni-input', 'feni-money', 'feni-donatation');
+
+        // Call the function for Quota Protest donation
+        donateToCause('quota-protest-input', 'quota-protest-money', 'quota-protest-donation');
+
+        // Restrict input to integers only
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', function () {
+                this.value = this.value.replace(/\D/g, ''); // Remove non-numeric characters
+            });
+        });
 
     </script>
 
