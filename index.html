@@ -21,6 +21,19 @@
             font-family: "Lexend", sans-serif;
         }
     </style>
+
+    <!-- tailwind script  -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
 <body class="font-lexend">
@@ -50,17 +63,17 @@
             <button class="btn text-black flex justify-center items-center px-8 py-4 font-bold">History</button>
         </section>
 
-        <!-- donation section  -->
+        <section class="mt-6">
 
-        <section class="">
+        <section class=" mt-6">
             <!-- 1st card  -->
-            <section class="flex flex-col md:flex-row justify-normal border rounded-lg p-6 w-4/5 mx-auto ">
+            <section class="flex flex-col md:flex-row justify-normal items-center border rounded-lg p-6 w-4/5 mx-auto mb-6">
                 <!-- image section -->
-                <div class="w-full md:w-1/2">
+                <div class="w-full md:w-1/2 md:pr-4">
                     <img src="./images/noakhali.png" alt="">
                 </div>
                 <!-- description section -->
-                <div class="w-full md:w-1/2 space-y-4 mt-4 md:mt-0">
+                <div class="w-full md:w-1/2 space-y-1 mt-4 md:mt-0">
                     <div>
                         <button class="btn"><img src="./images/coin.png" alt="">
                             10000 BDT</button>
@@ -83,13 +96,13 @@
             </section>
 
             <!-- 2nd card  -->
-            <section class="flex flex-col md:flex-row justify-normal border rounded-lg p-6 w-4/5 mx-auto ">
+            <section class="flex flex-col md:flex-row justify-normal items-center border rounded-lg p-6 w-4/5 mx-auto ">
                 <!-- image section -->
-                <div class="w-full md:w-1/2">
+                <div class="w-full md:w-1/2 md:pr-4">
                     <img src="./images/feni.png" alt="">
                 </div>
                 <!-- description section -->
-                <div class="w-full md:w-1/2 space-y-4 mt-4 md:mt-0">
+                <div class="w-full md:w-1/2 space-y-1 mt-4 md:mt-0">
                     <div>
                         <button class="btn"><img src="./images/coin.png" alt="">
                             10000 BDT</button>
@@ -110,13 +123,13 @@
             </section>
 
             <!-- 3rd card  -->
-            <section class="flex flex-col md:flex-row justify-normal border rounded-lg p-6 w-4/5 mx-auto ">
+            <section class="flex flex-col md:flex-row justify-normal items-center border rounded-lg p-6 w-4/5 mx-auto ">
                 <!-- image section -->
-                <div class="w-full md:w-1/2">
+                <div class="w-full md:w-1/2 md:pr-4">
                     <img src="./images/quota-protest.png" alt="">
                 </div>
                 <!-- description section -->
-                <div class="w-full md:w-1/2 space-y-4 mt-4 md:mt-0">
+                <div class="w-full md:w-1/2 space-y-1 mt-4 md:mt-0">
                     <div>
                         <button class="btn"><img src="./images/coin.png" alt="">
                             10000 BDT</button>
@@ -143,29 +156,23 @@
 
     </main>
 
+    <!-- footer section -->
 
+    <footer class="bg-[#F9F7F3] py-6">
+        <section>
+            <div>
+                <p class="text-black font-bold text-center">Donate Bangladesh</p>
+            </div>
+            <div class=" text-center">
+                <p class="text-black">Copyright © 2024 - All rights reserved</p>
+            </div>
+        </section>
 
-
-
-
-
-
+    </footer>
 
     <!-- javaScript  -->
     <script src="./js/script.js"></script>
 
-    <!-- tailwind script  -->.
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                    }
-                }
-            }
-        }
-    </script>
 </body>
 
 </html>
