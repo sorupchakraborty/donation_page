@@ -1,7 +1,9 @@
+
 const donationBtn = document.getElementById('donationBtn');
 const historyBtn = document.getElementById('historyBtn');
 const donationSection = document.getElementById('donationSection');
 const hiddenSection = document.getElementById('hiddenSection');
+const modal = document.getElementById('my_modal_5'); // Reference to the modal
 
 function showDonation() {
     donationSection.style.display = 'block';
@@ -29,9 +31,6 @@ donationBtn.onclick = showDonation;
 historyBtn.onclick = showHistory;
 
 showDonation();
-
-
-
 
 function donateToCause(causeInputId, causeMoneyId, donationBtnId, causeName) {
     const causeInput = document.getElementById(causeInputId);
@@ -66,19 +65,18 @@ function donateToCause(causeInputId, causeMoneyId, donationBtnId, causeName) {
             date: currentDate
         };
         localStorage.setItem('lastTransaction', JSON.stringify(lastTransaction));
+
+        // Show the modal on successful donation
+        modal.showModal();
     });
 }
 
 donateToCause('noakhali-input', 'noakhali-money', 'noakhali-donation', 'Flood at Noakhali, Bangladesh');
-
 donateToCause('feni-input', 'feni-money', 'feni-donatation', 'Flood Relief in Feni, Bangladesh');
-
 donateToCause('quota-protest-input', 'quota-protest-money', 'quota-protest-donation', 'Injured in Quota Movement');
 
 document.getElementById('historyBtn').addEventListener('click', function () {
-
     const hiddenSection = document.getElementById('hiddenSection');
-
     const lastTransaction = JSON.parse(localStorage.getItem('lastTransaction'));
 
     if (lastTransaction) {
@@ -98,5 +96,4 @@ document.querySelectorAll('input[type="text"]').forEach(input => {
         this.value = this.value.replace(/\D/g, '');
     });
 });
-
 

@@ -70,9 +70,70 @@
         </nav>
     </header>
 
+    <main class="container mx-auto pb-8 px-4 sm:px-6 lg:px-8">
+        <section class="mt-10 mb-5">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl">Important FAQ <i
+                    class="fa-regular fa-circle-question text-black"></i></h1>
+        </section>
 
+        <section>
+            <div class="collapse collapse-arrow bg-base-200">
+                <input type="radio" name="my-accordion-2" checked="checked" />
+                <div class="collapse-title text-lg sm:text-xl font-medium">What is the Document Object Model(DOM)?</div>
+                <div class="collapse-content">
+                    <p>The Document Object Model (DOM) is a programming interface that represents a web page's structure
+                        in memory as a logical tree of nodes and objects. It allows developers to manipulate the page's
+                        content, style, and structure using scripting languages like JavaScript</p>
+                </div>
+            </div>
+            <div class="collapse collapse-arrow bg-base-200">
+                <input type="radio" name="my-accordion-2" />
+                <div class="collapse-title text-lg sm:text-xl font-medium">How do you select an element from DOM?</div>
+                <div class="collapse-content">
+                    <p>To select an element from the DOM:</p>
+                    <p>1. Use document.getElementById('id') to select by ID.</p>
+                    <p>2. Use document.querySelector('selector') to select the first match of any CSS selector.</p>
+                    <p>3. Use document.getElementsByClassName('class') or document.getElementsByTagName('tag') for class
+                        and tag selections</p>
+                </div>
+            </div>
+            <div class="collapse collapse-arrow bg-base-200">
+                <input type="radio" name="my-accordion-2" />
+                <div class="collapse-title text-lg sm:text-xl font-medium">What is the event delegation in the context
+                    of DOM, and why is it useful?</div>
+                <div class="collapse-content">
+                    <p>Event delegation is a technique in the DOM where a single event listener is added to a parent
+                        element instead of multiple listeners on individual child elements. The event bubbles up from
+                        the target child to the parent, where the listener can handle events from all child elements.
+                    </p>
+                    <p>Why it's useful:</p>
+                    <ul class="list-disc pl-5">
+                        <li>Efficiency: Reduces memory usage by attaching fewer event listeners.</li>
+                        <li>Dynamic Elements: Handles events for dynamically added child elements without needing to
+                            reassign listeners.</li>
+                        <li>Simpler Management: Centralizes event handling in one place, making the code cleaner and
+                            easier to maintain.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="collapse collapse-arrow bg-base-200">
+                <input type="radio" name="my-accordion-2" />
+                <div class="collapse-title text-lg sm:text-xl font-medium">How do you manipulate an element's attributes
+                    and styles using DOM?</div>
+                <div class="collapse-content">
+                    <p>You can manipulate an element's attributes and styles using the DOM in the following ways:</p>
+                    <p>1. Attributes: Use element.setAttribute('attr', 'value') to set an attribute or
+                        element.getAttribute('attr') to get it.</p>
+                    <p>2. Styles: Access or modify styles via element.style.property = 'value' (e.g.,
+                        element.style.color = 'red';).</p>
+                    <p>3. Classes: Use element.classList.add('class'), element.classList.remove('class'), or
+                        element.classList.toggle('class') to manage CSS classes</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <main class="md:container mx-auto pb-8">
+    <!-- <main class="md:container mx-auto pb-8">
         <section class="mt-10 mb-5">
             <h1 class="text-4xl">Important FAQ <i class="fa-regular fa-circle-question text-black"></i></h1>
 
@@ -99,7 +160,7 @@
                     <p>2. Use document.querySelector('selector') to select the first match of any CSS selector.</p>
 
                     <p>3. Use document.getElementsByClassName('class') or document.getElementsByTagName('tag') for class
-                        andtag
+                        and tag
                         selections</p>
                 </div>
             </div>
@@ -139,7 +200,7 @@
                 </div>
             </div>
         </section>
-    </main>
+    </main> -->
 
 </body>
 
