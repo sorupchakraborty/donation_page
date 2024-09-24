@@ -37,36 +37,37 @@
 </head>
 
 <body class="font-lexend">
-    <header class="bg-[#F9F7F3] py-6">
+    <header class="bg-[#F9F7F3] py-6 sticky top-0 z-50">
         <nav class="md:container mx-auto pb-8">
-            <section class="flex items-center justify-between">
+            <section class="flex items-center justify-center gap-4 md:justify-between">
                 <div>
                     <a href="./blog.html">
                         <button
-                            class="btn bg-[#B4F461]  text-black flex justify-center items-center px-8 py-4 font-bold">Blog
-                        </button>
+                            class="btn bg-[#B4F461] text-black flex justify-center items-center px-4 py-2  md:px-8 md:py-4 font-bold">Blog</button>
                     </a>
                 </div>
-                <div class="flex items-center gap-4">
-                    <img src="./images/logo.png" alt="">
-                    <h4 class="font-bold ">Donate Bangladesh</h4>
+                <div class="hidden md:flex items-center gap-4">
+                    <img src="./images/logo.png" alt="Logo">
+                    <h4 class="font-bold">Donate Bangladesh</h4>
                 </div>
-                <div class="flex items-center gap-4">
-                    <img src="./images/coin.png" alt="">
-                    <p id="current-money" class="text-[#111111B3]">5500 BDT</p>
+                <div class="flex items-center gap-2 md:gap-4">
+                    <img src="./images/coin.png" alt="Coin">
+                    <p id="current-money" class="font-bold">5500 BDT</p>
                 </div>
+            </section>
+
+            <!-- Button section  -->
+            <section class="flex justify-center items-center gap-4 mt-8">
+                <button id="donationBtn"
+                    class="btn bg-[#B4F461] text-black flex justify-center items-center md:px-8 md:py-4 font-bold">Donation</button>
+                <button id="historyBtn"
+                    class="btn text-black flex justify-center items-center md:px-8 md:py-4 font-bold">History</button>
             </section>
         </nav>
     </header>
-    <main class="md:container mx-auto pb-8">
-        <!-- button section  -->
-        <section class=" flex justify-center items-center gap-4 mt-24">
-            <button id="donationBtn"
-                class="btn bg-[#B4F461]  text-black flex justify-center items-center px-8 py-4 font-bold">Donation</button>
-            <button id="historyBtn"
-                class="btn text-black flex justify-center items-center px-8 py-4 font-bold">History</button>
-        </section>
 
+    <main class="md:container mx-auto pb-8">
+        
         <!-- donation section -->
 
         <section id="donationSection" class="mt-6">
@@ -172,10 +173,11 @@
             </section>
         </section>
 
-        <!-- hidden section  -->
-        <section id="hiddenSection" style="display: none;">
-            <div></div>
+        <section id="hiddenSection" class="mt-6" style="display: none;">
+            <div class="bg-gray-100 p-4 rounded-lg text-center">
+            </div>
         </section>
+
     </main>
 
     <!-- footer section -->
@@ -194,57 +196,6 @@
 
     <!-- javaScript  -->
     <script src="./js/script.js"></script>
-    <script>
-        // Function to update the current-money and the cause's money
-        function donateToCause(causeInputId, causeMoneyId, donationBtnId) {
-            // Get elements by IDs
-            const causeInput = document.getElementById(causeInputId);
-            const causeMoney = document.getElementById(causeMoneyId);
-            const currentMoney = document.getElementById('current-money');
-
-            // Add event listener to the donation button
-            document.getElementById(donationBtnId).addEventListener('click', function () {
-                let donationAmount = parseInt(causeInput.value);
-                let availableMoney = parseInt(currentMoney.textContent.replace(/\D/g, '')); // Extracts only the number (ignoring 'BDT')
-                let currentCauseMoney = parseInt(causeMoney.textContent.replace(/\D/g, '')); // Extracts only the number (ignoring 'BDT')
-
-                // Validate the donation amount
-                if (isNaN(donationAmount) || donationAmount <= 0) {
-                    alert("Please enter a valid positive number.");
-                    return;
-                }
-
-                if (donationAmount > availableMoney) {
-                    alert("Donation amount cannot exceed current available funds.");
-                    return;
-                }
-
-                // If validation passes, update the amounts
-                causeMoney.textContent = (currentCauseMoney + donationAmount).toLocaleString() + ' BDT';
-                currentMoney.textContent = (availableMoney - donationAmount).toLocaleString() + ' BDT';
-
-                // Clear the input field after donation
-                causeInput.value = '';
-            });
-        }
-
-        // Call the function for Noakhali donation
-        donateToCause('noakhali-input', 'noakhali-money', 'noakhali-donation');
-
-        // Call the function for Feni donation
-        donateToCause('feni-input', 'feni-money', 'feni-donatation');
-
-        // Call the function for Quota Protest donation
-        donateToCause('quota-protest-input', 'quota-protest-money', 'quota-protest-donation');
-
-        // Restrict input to integers only
-        document.querySelectorAll('input[type="text"]').forEach(input => {
-            input.addEventListener('input', function () {
-                this.value = this.value.replace(/\D/g, ''); // Remove non-numeric characters
-            });
-        });
-
-    </script>
 
 </body>
 

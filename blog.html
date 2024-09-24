@@ -41,26 +41,36 @@
 
 <body class="font-lexend">
 
-    <header class="bg-[#F9F7F3] py-6">
+    <header class="bg-[#F9F7F3] py-6 sticky top-0 z-50">
         <nav class="md:container mx-auto pb-8">
-            <section class="flex items-center justify-between">
+            <section class="flex items-center justify-center gap-4 md:justify-between">
                 <div>
-                    <a href="./index.html"><button
-                            class="btn bg-[#B4F461]  text-black flex justify-center items-center px-8 py-4 font-bold">Home
-                        </button></a>
+                    <a href="./index.html">
+                        <button
+                            class="btn bg-[#B4F461] text-black flex justify-center items-center px-4 py-2  md:px-8 md:py-4 font-bold">Home</button>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center gap-4">
+                    <img src="./images/logo.png" alt="Logo">
+                    <h4 class="font-bold">Donate Bangladesh</h4>
+                </div>
+                <div class="flex items-center gap-2 md:gap-4">
+                    <img src="./images/coin.png" alt="Coin">
+                    <p id="current-money" class="font-bold">5500 BDT</p>
+                </div>
+            </section>
 
-                </div>
-                <div class="flex items-center gap-4">
-                    <img src="./images/logo.png" alt="">
-                    <h4 class="font-bold ">Donate Bangladesh</h4>
-                </div>
-                <div class="flex items-center gap-4">
-                    <img src="./images/coin.png" alt="">
-                    <p class="text-[#111111B3]">5500 BDT</p>
-                </div>
+            <!-- Button section  -->
+            <section class="flex justify-center items-center gap-4 mt-8">
+                <button id="donationBtn"
+                    class="btn bg-[#B4F461] text-black flex justify-center items-center md:px-8 md:py-4 font-bold">Donation</button>
+                <button id="historyBtn"
+                    class="btn text-black flex justify-center items-center md:px-8 md:py-4 font-bold">History</button>
             </section>
         </nav>
     </header>
+
+
 
     <main class="md:container mx-auto pb-8">
         <section class="mt-10 mb-5">
