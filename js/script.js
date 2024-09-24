@@ -1,30 +1,30 @@
-
 const donationBtn = document.getElementById('donationBtn');
 const historyBtn = document.getElementById('historyBtn');
 const donationSection = document.getElementById('donationSection');
 const hiddenSection = document.getElementById('hiddenSection');
-const modal = document.getElementById('my_modal_5'); // Reference to the modal
+const modal = document.getElementById('my_modal_5');
+
+function toggleSections(showDonation) {
+    donationSection.style.display = showDonation ? 'block' : 'none';
+    hiddenSection.style.display = showDonation ? 'none' : 'block';
+}
+
+function updateButtonStyles(activeBtn, inactiveBtn) {
+    activeBtn.classList.remove('bg-gray-500', 'text-white');
+    activeBtn.classList.add('bg-[#B4F461]', 'text-black');
+
+    inactiveBtn.classList.remove('bg-[#B4F461]', 'text-black');
+    inactiveBtn.classList.add('bg-gray-500', 'text-white');
+}
 
 function showDonation() {
-    donationSection.style.display = 'block';
-    hiddenSection.style.display = 'none';
-
-    donationBtn.classList.remove('bg-gray-500', 'text-white');
-    donationBtn.classList.add('bg-[#B4F461]', 'text-black');
-
-    historyBtn.classList.remove('bg-[#B4F461]', 'text-black');
-    historyBtn.classList.add('bg-gray-500', 'text-white');
+    toggleSections(true);
+    updateButtonStyles(donationBtn, historyBtn);
 }
 
 function showHistory() {
-    donationSection.style.display = 'none';
-    hiddenSection.style.display = 'block';
-
-    donationBtn.classList.remove('bg-[#B4F461]', 'text-black');
-    donationBtn.classList.add('bg-gray-500', 'text-white');
-
-    historyBtn.classList.remove('bg-gray-500', 'text-white');
-    historyBtn.classList.add('bg-[#B4F461]', 'text-black');
+    toggleSections(false);
+    updateButtonStyles(historyBtn, donationBtn);
 }
 
 donationBtn.onclick = showDonation;
@@ -66,7 +66,6 @@ function donateToCause(causeInputId, causeMoneyId, donationBtnId, causeName) {
         };
         localStorage.setItem('lastTransaction', JSON.stringify(lastTransaction));
 
-        // Show the modal on successful donation
         modal.showModal();
     });
 }
@@ -75,8 +74,7 @@ donateToCause('noakhali-input', 'noakhali-money', 'noakhali-donation', 'Flood at
 donateToCause('feni-input', 'feni-money', 'feni-donatation', 'Flood Relief in Feni, Bangladesh');
 donateToCause('quota-protest-input', 'quota-protest-money', 'quota-protest-donation', 'Injured in Quota Movement');
 
-document.getElementById('historyBtn').addEventListener('click', function () {
-    const hiddenSection = document.getElementById('hiddenSection');
+historyBtn.addEventListener('click', function () {
     const lastTransaction = JSON.parse(localStorage.getItem('lastTransaction'));
 
     if (lastTransaction) {
@@ -96,4 +94,3 @@ document.querySelectorAll('input[type="text"]').forEach(input => {
         this.value = this.value.replace(/\D/g, '');
     });
 });
-
